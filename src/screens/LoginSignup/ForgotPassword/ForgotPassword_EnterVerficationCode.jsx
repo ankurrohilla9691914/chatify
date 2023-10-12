@@ -2,33 +2,34 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
   Image,
   TextInput,
+  TouchableOpacity,
+  ActivityIndicator,
+  ImageBackground,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import {
   containerFull,
   goBackContainer,
   goback,
+  hr80,
   logo1,
 } from "../../../globalStyle/pagecss";
 import chatify_logo from "./../../../../assets/Chatify_logo.png";
 import {
   formbtn,
-  formHead2,
   formHead3,
   formInput,
 } from "../../../globalStyle/formcss";
 import { MaterialIcons } from "@expo/vector-icons";
-import Signup_ChoosePassword from "./Signup_ChoosePassword";
-import Signup_EnterEmail from "./Signup_EnterEmail";
-import Signup_ChooseUsername from "./Signup_ChooseUsername";
-const Signup_EnterVerification = ({ navigation }) => {
+import ForgotPassword_ChoosePassword from "./ForgotPassword_ChoosePassword";
+import ForgotPassword_EnterEmail from "./ForgotPassword_EnterEmail";
+const ForgotPassword_EnterVerificationCode = ({ navigation }) => {
   return (
     <View style={containerFull}>
       <TouchableOpacity
-        onPress={() => navigation.navigate(Signup_EnterEmail)}
+        onPress={() => navigation.navigate(ForgotPassword_EnterEmail)}
         style={goback}
       >
         <MaterialIcons name="arrow-back-ios" size={24} color="gray" />
@@ -40,28 +41,29 @@ const Signup_EnterVerification = ({ navigation }) => {
         A verification code has been sent to your email
       </Text>
       <TextInput
-        placeholder="Enter verification code ..."
+        placeholder="Enter verification code"
         style={formInput}
         onChangeText={(text) => {
-          // setEmail(text);
+          setEmail(text);
         }}
       />
-      {/* {false ? (
+      {false ? (
         <ActivityIndicator size="large" color="white" />
-      ) : ( */}
-      <Text
-        style={formbtn}
-        onPress={() => {
-          navigation.navigate(Signup_ChooseUsername);
-        }}
-      >
-        Next
-      </Text>
-      {/* )} */}
+      ) : (
+        <Text
+          style={formbtn}
+          onPress={() => {
+            console.log("hello");
+            navigation.navigate(ForgotPassword_ChoosePassword);
+          }}
+        >
+          Next
+        </Text>
+      )}
     </View>
   );
 };
 
-export default Signup_EnterVerification;
+export default ForgotPassword_EnterVerificationCode;
 
 const styles = StyleSheet.create({});

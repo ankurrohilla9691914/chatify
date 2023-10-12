@@ -50,4 +50,13 @@ module.exports = {
     fontSize: 18,
     alignSelf: "center",
   },
+  goBackContainer: {
+    color: "gray",
+    fontSize: 16,
+  },
+  logo3: {
+    height: 24,
+    width: 24,
+    borderRadius: 50,
+  },
 };

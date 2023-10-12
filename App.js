@@ -15,10 +15,11 @@ import Signup_ChoosePassword from "./src/screens/LoginSignup/Signup/Signup_Choos
 import Signup_ChooseUsername from "./src/screens/LoginSignup/Signup/Signup_ChooseUsername";
 import Signup_AccountCreated from "./src/screens/LoginSignup/Signup/Signup_AccountCreated";
 import ForgotPassword_EnterEmail from "./src/screens/LoginSignup/ForgotPassword/ForgotPassword_EnterEmail";
-import ForgotPassword_EnterVerficicationCode from "./src/screens/LoginSignup/ForgotPassword/ForgotPassword_EnterVerficicationCode";
 import ForgotPassword_AccountRecovered from "./src/screens/LoginSignup/ForgotPassword/ForgotPassword_AccountRecovered";
 import ForgotPassword_ChoosePassword from "./src/screens/LoginSignup/ForgotPassword/ForgotPassword_ChoosePassword";
 import MainPage from "./src/screens/MainPage/MainPage";
+import ForgotPassword_EnterVerificationCode from "./src/screens/LoginSignup/ForgotPassword/ForgotPassword_EnterVerficationCode";
+import BottomNavBar from "./src/components/BottomNavBar";
 
 const Stack = createNativeStackNavigator();
 
@@ -56,8 +57,8 @@ export default function App() {
             component={ForgotPassword_EnterEmail}
           />
           <Stack.Screen
-            name="ForgotPassword_EnterVerficicationCode"
-            component={ForgotPassword_EnterVerficicationCode}
+            name="ForgotPassword_EnterVerificationCode"
+            component={ForgotPassword_EnterVerificationCode}
           />
           <Stack.Screen
             name="ForgotPassword_AccountRecovered"
@@ -67,10 +68,7 @@ export default function App() {
             name="ForgotPassword_ChoosePassword"
             component={ForgotPassword_ChoosePassword}
           />
-          <Stack.Screen
-            name="MainPage"
-            component={MainPage}
-          />
+          <Stack.Screen name="MainPage" component={MainPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
@@ -84,6 +82,6 @@ const styles = StyleSheet.create({
   androidSafeAreaView: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    backgroundColor: "black",
+    // backgroundColor: "#0C6C9F",
   },
 });

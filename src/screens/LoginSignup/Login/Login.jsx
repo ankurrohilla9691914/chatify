@@ -36,7 +36,7 @@ const Login = ({ navigation }) => {
       <TextInput placeholder="Enter your email..." style={formInput} />
       <View style={passwordInputContainer}>
         <TextInput
-          placeholder="Enter yorur password..."
+          placeholder="Enter your password..."
           style={formInput}
           secureTextEntry={!showPassword}
         />
