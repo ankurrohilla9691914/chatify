@@ -9,9 +9,9 @@ import FollowersRandomPost from "../../components/FollowersRandomPost";
 const MainPage = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <TopNavBar />
+      <TopNavBar navigation={navigation} />
       <FollowersRandomPost />
-      <BottomNavBar />
+      <BottomNavBar navigation={navigation} />
     </View>
   );
 };

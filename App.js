@@ -21,6 +21,7 @@ import MainPage from "./src/screens/MainPage/MainPage";
 import ForgotPassword_EnterVerificationCode from "./src/screens/LoginSignup/ForgotPassword/ForgotPassword_EnterVerficationCode";
 import BottomNavBar from "./src/components/BottomNavBar";
 import { PRIMARY_COLOR } from "./src/constants";
+import All_Chats from "./src/screens/ChatSection/All_Chats";
 
 const Stack = createNativeStackNavigator();
 
@@ -68,6 +69,11 @@ export default function App() {
           <Stack.Screen
             name="ForgotPassword_ChoosePassword"
             component={ForgotPassword_ChoosePassword}
+          />
+          <Stack.Screen
+            name="All_Chats"
+            component={All_Chats}
+            options={{ animation: "slide_from_bottom" }}
           />
           <Stack.Screen name="MainPage" component={MainPage} />
         </Stack.Navigator>

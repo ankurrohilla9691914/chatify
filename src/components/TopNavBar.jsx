@@ -4,7 +4,8 @@ import { containerFull, logo2, logo3 } from "../globalStyle/pagecss";
 import chatify_logo from "./../../assets/Chatify_logo.png";
 import { AntDesign } from "@expo/vector-icons";
 import { PRIMARY_COLOR } from "../constants";
-const TopNavBar = () => {
+import All_Chats from "../screens/ChatSection/All_Chats";
+const TopNavBar = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={chatify_logo} style={logo3} backgroundColor={"white"} />
@@ -18,7 +19,14 @@ const TopNavBar = () => {
       >
         Chatify
       </Text>
-      <AntDesign name="message1" size={24} color="white" />
+      <AntDesign
+        name="message1"
+        size={24}
+        color="white"
+        onPress={() => {
+          navigation.navigate(All_Chats);
+        }}
+      />
     </View>
   );
 };

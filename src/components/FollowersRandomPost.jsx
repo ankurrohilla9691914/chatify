@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import PostCard from "./Cards/PostCard";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -98,11 +98,13 @@ const FollowersRandomPost = () => {
     },
   ];
   return (
-    <ScrollView style={{ width: "100%" }}>
-      {data.map((post) => {
-        return <PostCard postData={post} key={post.id} />;
-      })}
-    </ScrollView>
+    <FlatList
+      data={data}
+      renderItem={({ item }) => {
+        return <PostCard postData={item} key={item.id} />;
+      }}
+      keyExtractor={(item) => item.id}
+    />
   );
 };
 
