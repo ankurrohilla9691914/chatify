@@ -4,12 +4,13 @@ import { containerFull } from "../../globalStyle/pagecss";
 import { formHead } from "../../globalStyle/formcss";
 import BottomNavBar from "../../components/BottomNavBar";
 import TopNavBar from "../../components/TopNavBar";
+import FollowersRandomPost from "../../components/FollowersRandomPost";
 
 const MainPage = ({ navigation }) => {
   return (
-    <View style={containerFull}>
+    <View style={styles.container}>
       <TopNavBar />
-      <Text style={formHead}>MainPage</Text>
+      <FollowersRandomPost />
       <BottomNavBar />
     </View>
   );
@@ -17,4 +18,11 @@ const MainPage = ({ navigation }) => {
 
 export default MainPage;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    height: "100%",
+
+    paddingVertical: 50,
+  },
+});

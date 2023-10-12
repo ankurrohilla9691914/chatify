@@ -1,7 +1,9 @@
+const { PRIMARY_COLOR } = require("../constants");
+
 module.exports = {
   formHead: {
     fontSize: 30,
-    color: "#0C6C9F",
+    color: PRIMARY_COLOR,
     textAlign: "center",
     fontWeight: "bold",
     // backgroundColor: 'white',
@@ -30,7 +32,7 @@ module.exports = {
   },
   formbtn: {
     width: "80%",
-    backgroundColor: "#0C6C9F",
+    backgroundColor: PRIMARY_COLOR,
     borderRadius: 10,
     borderColor: "white",
     borderWidth: 1,
@@ -41,7 +43,7 @@ module.exports = {
     marginVertical: 10,
   },
   formTextLinkRight: {
-    color: "#0C6C9F",
+    color: PRIMARY_COLOR,
     fontSize: 15,
     textAlign: "right",
     width: "80%",
@@ -55,11 +57,9 @@ module.exports = {
     fontSize: 20,
     textAlign: "center",
     fontWeight: "bold",
-    // backgroundColor: 'white',
   },
   formHead3: {
     fontSize: 20,
-    // backgroundColor: 'white',
     color: "grey",
     textAlign: "center",
     fontWeight: "400",
@@ -69,7 +69,6 @@ module.exports = {
     marginVertical: 10,
   },
   formTextLink: {
-    color: "#0C6C9F",
     fontSize: 16,
     fontWeight: "bold",
     textDecorationLine: "underline",

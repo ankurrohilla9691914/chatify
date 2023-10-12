@@ -6,12 +6,13 @@ import { formbtn, formHead2 } from "../../../globalStyle/formcss";
 import { MaterialIcons } from "@expo/vector-icons";
 import MainPage from "../../MainPage/MainPage";
 import Login from "../Login/Login"
+import { PRIMARY_COLOR } from "../../../constants";
 const Signup_AccountCreated = ({ navigation }) => {
   return (
     <View style={containerFull}>
       <Image source={chatify_logo} style={logo1} />
       <View style={row}>
-        <MaterialIcons name="check-circle" size={40} color={"#0C6C9F"} />
+        <MaterialIcons name="check-circle" size={40} color={PRIMARY_COLOR} />
         <Text style={formHead2}>Account created successfully</Text>
       </View>
 

@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import { PRIMARY_COLOR } from "../constants";
 
 const BottomNavBar = () => {
   return (
@@ -18,7 +19,7 @@ export default BottomNavBar;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#0C6C9F",
+    backgroundColor: PRIMARY_COLOR,
     position: "absolute",
     bottom: 0,
     width: "100%",

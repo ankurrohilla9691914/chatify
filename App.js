@@ -20,6 +20,7 @@ import ForgotPassword_ChoosePassword from "./src/screens/LoginSignup/ForgotPassw
 import MainPage from "./src/screens/MainPage/MainPage";
 import ForgotPassword_EnterVerificationCode from "./src/screens/LoginSignup/ForgotPassword/ForgotPassword_EnterVerficationCode";
 import BottomNavBar from "./src/components/BottomNavBar";
+import { PRIMARY_COLOR } from "./src/constants";
 
 const Stack = createNativeStackNavigator();
 
@@ -82,6 +83,6 @@ const styles = StyleSheet.create({
   androidSafeAreaView: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
-    // backgroundColor: "#0C6C9F",
+    backgroundColor: PRIMARY_COLOR,
   },
 });
