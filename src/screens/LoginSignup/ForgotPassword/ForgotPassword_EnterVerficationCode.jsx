@@ -53,7 +53,6 @@ const ForgotPassword_EnterVerificationCode = ({ navigation }) => {
         <Text
           style={formbtn}
           onPress={() => {
-            console.log("hello");
             navigation.navigate(ForgotPassword_ChoosePassword);
           }}
         >

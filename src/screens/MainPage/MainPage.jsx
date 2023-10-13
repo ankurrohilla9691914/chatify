@@ -11,7 +11,7 @@ const MainPage = ({ navigation }) => {
     <View style={styles.container}>
       <TopNavBar navigation={navigation} />
       <FollowersRandomPost />
-      <BottomNavBar navigation={navigation} />
+      <BottomNavBar navigation={navigation} activePage={"MainPage"} />
     </View>
   );
 };

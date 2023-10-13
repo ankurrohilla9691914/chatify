@@ -47,9 +47,7 @@ const ForgotPassword_EnterEmail = ({ navigation }) => {
         <Text
           style={formbtn}
           onPress={() => {
-            console.log("hello 1");
             navigation.navigate(ForgotPassword_EnterVerificationCode);
-            console.log("hello 2");
           }}
         >
           Next

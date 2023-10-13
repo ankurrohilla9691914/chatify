@@ -5,7 +5,7 @@ import chatify_logo from "./../../assets/Chatify_logo.png";
 import { AntDesign } from "@expo/vector-icons";
 import { PRIMARY_COLOR } from "../constants";
 import All_Chats from "../screens/ChatSection/All_Chats";
-const TopNavBar = ({ navigation }) => {
+const TopNavBar = ({ navigation, page }) => {
   return (
     <View style={styles.container}>
       <Image source={chatify_logo} style={logo3} backgroundColor={"white"} />

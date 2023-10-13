@@ -22,6 +22,9 @@ import ForgotPassword_EnterVerificationCode from "./src/screens/LoginSignup/Forg
 import BottomNavBar from "./src/components/BottomNavBar";
 import { PRIMARY_COLOR } from "./src/constants";
 import All_Chats from "./src/screens/ChatSection/All_Chats";
+import SearchUserPage from "./src/screens/MainPage/SearchUserPage";
+import NotificationsPage from "./src/screens/MainPage/NotificationsPage";
+import MyProfile from "./src/screens/Profile/MyProfile";
 
 const Stack = createNativeStackNavigator();
 
@@ -76,6 +79,21 @@ export default function App() {
             options={{ animation: "slide_from_bottom" }}
           />
           <Stack.Screen name="MainPage" component={MainPage} />
+          <Stack.Screen
+            name="SearchUserPage"
+            component={SearchUserPage}
+            options={{ animation: "slide_from_bottom" }}
+          />
+          <Stack.Screen
+            name="NotificationsPage"
+            component={NotificationsPage}
+            options={{ animation: "slide_from_bottom" }}
+          />
+          <Stack.Screen
+            name="MyProfile"
+            component={MyProfile}
+            options={{ animation: "slide_from_bottom" }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
