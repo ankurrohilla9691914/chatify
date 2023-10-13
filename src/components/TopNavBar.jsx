@@ -3,8 +3,10 @@ import React from "react";
 import { containerFull, logo2, logo3 } from "../globalStyle/pagecss";
 import chatify_logo from "./../../assets/Chatify_logo.png";
 import { AntDesign } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { PRIMARY_COLOR } from "../constants";
 import All_Chats from "../screens/ChatSection/All_Chats";
+import Settings1 from "../screens/Settings/Settings1";
 const TopNavBar = ({ navigation, page }) => {
   return (
     <View style={styles.container}>
@@ -19,14 +21,26 @@ const TopNavBar = ({ navigation, page }) => {
       >
         Chatify
       </Text>
-      <AntDesign
-        name="message1"
-        size={24}
-        color="white"
-        onPress={() => {
-          navigation.navigate(All_Chats);
-        }}
-      />
+
+      {page === "MyProfile" ? (
+        <Ionicons
+          name="settings"
+          size={24}
+          color={"white"}
+          onPress={() => {
+            navigation.navigate(Settings1);
+          }}
+        />
+      ) : (
+        <AntDesign
+          name={"message1"}
+          size={24}
+          color="white"
+          onPress={() => {
+            navigation.navigate(All_Chats);
+          }}
+        />
+      )}
     </View>
   );
 };

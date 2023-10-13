@@ -25,6 +25,7 @@ import All_Chats from "./src/screens/ChatSection/All_Chats";
 import SearchUserPage from "./src/screens/MainPage/SearchUserPage";
 import NotificationsPage from "./src/screens/MainPage/NotificationsPage";
 import MyProfile from "./src/screens/Profile/MyProfile";
+import Settings1 from "./src/screens/Settings/Settings1";
 
 const Stack = createNativeStackNavigator();
 
@@ -92,6 +93,12 @@ export default function App() {
           <Stack.Screen
             name="MyProfile"
             component={MyProfile}
+            options={{ animation: "slide_from_bottom" }}
+          />
+
+          <Stack.Screen
+            name="Settings1"
+            component={Settings1}
             options={{ animation: "slide_from_bottom" }}
           />
         </Stack.Navigator>
