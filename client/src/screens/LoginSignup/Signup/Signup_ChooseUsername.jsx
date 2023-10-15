@@ -5,8 +5,9 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
+  ActivityIndicator,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import {
   containerFull,
   goBackContainer,
@@ -15,15 +16,45 @@ import {
 } from "../../../globalStyle/pagecss";
 import chatify_logo from "./../../../../assets/Chatify_logo.png";
 import {
+  errorText,
   formbtn,
   formHead2,
   formHead3,
   formInput,
 } from "../../../globalStyle/formcss";
 import { MaterialIcons } from "@expo/vector-icons";
-import Signup_ChoosePassword from "./Signup_ChoosePassword";
 import Signup_EnterEmail from "./Signup_EnterEmail";
-const Signup_ChooseUsername = ({ navigation }) => {
+import { verifyUserName } from "../../../service/api";
+import { PRIMARY_COLOR } from "../../../constants";
+
+const Signup_ChooseUsername = ({ navigation, route }) => {
+  const { email } = route.params;
+  const [userName, setUserName] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleUserName = async () => {
+    setLoading(true);
+
+    const data = await verifyUserName({ userName: userName, email: email });
+    if (userName == "") {
+      setErrorMessage("please enter username");
+      setShowError(true);
+      setLoading(false);
+    } else if (data.message == "userName not available") {
+      setLoading(false);
+      setShowError(true);
+      setErrorMessage("userName not available");
+    } else {
+      navigation.navigate("Signup_ChoosePassword", {
+        email: email,
+        userName: userName,
+      });
+      setLoading(false);
+    }
+  };
+
   return (
     <View style={containerFull}>
       <TouchableOpacity
@@ -40,21 +71,22 @@ const Signup_ChooseUsername = ({ navigation }) => {
         placeholder="choose username  ..."
         style={formInput}
         onChangeText={(text) => {
-          // setEmail(text);
+          setUserName(text);
+        }}
+        onChange={() => {
+          setLoading(false);
+          setShowError(false);
         }}
       />
-      {/* {false ? (
-        <ActivityIndicator size="large" color="white" />
-      ) : ( */}
-      <Text
-        style={formbtn}
-        onPress={() => {
-          navigation.navigate(Signup_ChoosePassword);
-        }}
-      >
-        Next
-      </Text>
-      {/* )} */}
+      {showError && <Text style={errorText}>{errorMessage} </Text>}
+
+      {loading ? (
+        <ActivityIndicator size="large" color={PRIMARY_COLOR} />
+      ) : (
+        <Text style={formbtn} onPress={handleUserName}>
+          Next
+        </Text>
+      )}
     </View>
   );
 };

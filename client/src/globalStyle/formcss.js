@@ -73,4 +73,7 @@ module.exports = {
     fontWeight: "bold",
     textDecorationLine: "underline",
   },
+  errorText: {
+    color: "red",
+  },
 };

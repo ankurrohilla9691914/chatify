@@ -5,8 +5,9 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
+  ActivityIndicator,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import {
   containerFull,
   goBackContainer,
@@ -15,6 +16,7 @@ import {
 } from "../../../globalStyle/pagecss";
 import chatify_logo from "./../../../../assets/Chatify_logo.png";
 import {
+  errorText,
   formbtn,
   formHead2,
   formHead3,
@@ -24,7 +26,27 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Signup_ChoosePassword from "./Signup_ChoosePassword";
 import Signup_EnterEmail from "./Signup_EnterEmail";
 import Signup_ChooseUsername from "./Signup_ChooseUsername";
-const Signup_EnterVerification = ({ navigation }) => {
+import { PRIMARY_COLOR } from "../../../constants";
+const Signup_EnterVerification = ({ navigation, route }) => {
+  const { email, verificationCode } = route.params;
+
+  const [enteredVerificationCode, setEnteredVerificationCode] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleVerficationCode = () => {
+    setLoading(true);
+
+    if (enteredVerificationCode !== verificationCode.toString()) {
+      setShowError(true);
+      setErrorMessage("Incorrect verification code");
+      setLoading(false);
+    } else {
+      navigation.navigate("Signup_ChooseUsername", { email: email });
+      setLoading(false);
+    }
+  };
   return (
     <View style={containerFull}>
       <TouchableOpacity
@@ -43,21 +65,20 @@ const Signup_EnterVerification = ({ navigation }) => {
         placeholder="Enter verification code ..."
         style={formInput}
         onChangeText={(text) => {
-          // setEmail(text);
+          setEnteredVerificationCode(text);
+        }}
+        onChange={() => {
+          setShowError(false);
         }}
       />
-      {/* {false ? (
-        <ActivityIndicator size="large" color="white" />
-      ) : ( */}
-      <Text
-        style={formbtn}
-        onPress={() => {
-          navigation.navigate(Signup_ChooseUsername);
-        }}
-      >
-        Next
-      </Text>
-      {/* )} */}
+      {showError && <Text style={errorText}>{errorMessage} </Text>}
+      {loading ? (
+        <ActivityIndicator size="large" color={PRIMARY_COLOR} />
+      ) : (
+        <Text style={formbtn} onPress={handleVerficationCode}>
+          Next
+        </Text>
+      )}
     </View>
   );
 };

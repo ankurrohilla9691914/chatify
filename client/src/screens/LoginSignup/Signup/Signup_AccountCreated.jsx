@@ -4,8 +4,7 @@ import { containerFull, logo1, row } from "../../../globalStyle/pagecss";
 import chatify_logo from "./../../../../assets/Chatify_logo.png";
 import { formbtn, formHead2 } from "../../../globalStyle/formcss";
 import { MaterialIcons } from "@expo/vector-icons";
-import MainPage from "../../MainPage/MainPage";
-import Login from "../Login/Login"
+import Login from "../Login/Login";
 import { PRIMARY_COLOR } from "../../../constants";
 const Signup_AccountCreated = ({ navigation }) => {
   return (
