@@ -18,6 +18,7 @@ import {
 } from "../../../globalStyle/pagecss";
 import chatify_logo from "./../../../../assets/Chatify_logo.png";
 import {
+  errorText,
   formbtn,
   formHead3,
   formInput,
@@ -25,7 +26,27 @@ import {
 import { MaterialIcons } from "@expo/vector-icons";
 import ForgotPassword_ChoosePassword from "./ForgotPassword_ChoosePassword";
 import ForgotPassword_EnterEmail from "./ForgotPassword_EnterEmail";
-const ForgotPassword_EnterVerificationCode = ({ navigation }) => {
+import { PRIMARY_COLOR } from "../../../constants";
+const ForgotPassword_EnterVerificationCode = ({ navigation, route }) => {
+  const { email, verificationCode } = route.params;
+
+  const [enteredVerificationCode, setEnteredVerificationCode] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleVerficationCode = () => {
+    setLoading(true);
+
+    if (enteredVerificationCode !== verificationCode.toString()) {
+      setShowError(true);
+      setErrorMessage("Incorrect verification code");
+      setLoading(false);
+    } else {
+      navigation.navigate("ForgotPassword_ChoosePassword", { email: email });
+      setLoading(false);
+    }
+  };
   return (
     <View style={containerFull}>
       <TouchableOpacity
@@ -44,18 +65,15 @@ const ForgotPassword_EnterVerificationCode = ({ navigation }) => {
         placeholder="Enter verification code"
         style={formInput}
         onChangeText={(text) => {
-          setEmail(text);
+          setEnteredVerificationCode(text);
         }}
       />
-      {false ? (
-        <ActivityIndicator size="large" color="white" />
+
+      {showError && <Text style={errorText}>{errorMessage} </Text>}
+      {loading ? (
+        <ActivityIndicator size="large" color={PRIMARY_COLOR} />
       ) : (
-        <Text
-          style={formbtn}
-          onPress={() => {
-            navigation.navigate(ForgotPassword_ChoosePassword);
-          }}
-        >
+        <Text style={formbtn} onPress={handleVerficationCode}>
           Next
         </Text>
       )}

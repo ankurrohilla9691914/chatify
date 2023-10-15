@@ -51,7 +51,6 @@ const Signup_EnterEmail = ({ navigation }) => {
           setErrorMessage(data.error);
         } else {
           setLoading(false);
-          console.log(data.message);
           navigation.navigate("Signup_EnterVerification", {
             email: data.email,
             verificationCode: data.verificationCode,

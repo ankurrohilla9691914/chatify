@@ -1,4 +1,5 @@
 import axios from "axios";
+import { errorText } from "../globalStyle/formcss";
 
 export const verifyEmail = async ({ email }) => {
   try {
@@ -31,10 +32,9 @@ export const verifyEmail = async ({ email }) => {
         },
       }
     );
-    console.log(response?.data);
     return response.data;
   } catch (e) {
-    // console.log("error in calling verify api  ->", e.response.data);
+    console.log("error in calling verifyEmail api", error);
     return e.response.data;
   }
 };
@@ -55,7 +55,8 @@ export const verifyUserName = async ({ userName, email }) => {
     );
     return response.data;
   } catch (e) {
-    console.log("error in calling username api  ->", e.response.data);
+    console.log("error in calling verifyUserName api", error);
+
     return e.response.data;
   }
 };
@@ -75,11 +76,76 @@ export const handleSignup = async ({ userName, email, password }) => {
         },
       }
     );
-    console.log("response.data");
 
     return response.data;
   } catch (e) {
-    console.log("error in calling username api  ->", e.response.data);
+    console.log("error in calling handleSignup api", error);
+
+    return e.response.data;
+  }
+};
+
+export const verifyForgotPasswordEmail = async ({ email }) => {
+  try {
+    const response = await axios.post(
+      "http://192.168.31.130:8000/auth/verifyForgotPassword",
+      {
+        email: email,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (e) {
+    console.log("error in calling verifyForgotPassword api", error);
+
+    return e.response.data;
+  }
+};
+
+export const resetPassword = async ({ email, password }) => {
+  try {
+    const response = await axios.post(
+      "http://192.168.31.130:8000/auth/resetPassword",
+      {
+        email: email,
+        password: password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (e) {
+    console.log("error in calling resetPassword api", error);
+
+    return e.response.data;
+  }
+};
+
+export const login = async ({ email, password }) => {
+  try {
+    const response = await axios.post(
+      "http://192.168.31.130:8000/auth/login",
+      {
+        email: email,
+        password: password,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (e) {
+    console.log("error in calling login api", error);
+
     return e.response.data;
   }
 };
